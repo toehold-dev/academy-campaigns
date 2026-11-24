@@ -1,0 +1,7 @@
+# Repo and Cloudflare setup files: never served on the website
+wrangler.jsonc
+.gitignore
+.assetsignore
+.wrangler
+node_modules
+.DS_Store
