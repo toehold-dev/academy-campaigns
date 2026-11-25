@@ -12,7 +12,18 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- TODO before launch: paste Meta Pixel / Google tag here -->
+<!-- Meta Pixel. Paste the pixel ID (digits only) from Events Manager into META_PIXEL_ID. Nothing loads while it is empty. -->
+<script>
+  window.META_PIXEL_ID = "1460449725521393";
+  if (window.META_PIXEL_ID) {
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', window.META_PIXEL_ID);
+    fbq('track', 'PageView');
+    fbq('track', 'ViewContent', {content_name: 'ASPW Dec 19-20', content_category: 'workshop', value: 7500, currency: 'INR'});
+  }
+</script>
 
 <style>
   :root{
@@ -516,7 +527,13 @@
   (function(){
     var url = new URL(window.BOOK_URL);
     new URLSearchParams(location.search).forEach(function(v,k){ if(/^utm_|^fbclid$|^gclid$/.test(k)) url.searchParams.set(k,v); });
-    document.querySelectorAll('[data-book]').forEach(function(a){ a.href = url.toString(); });
+    document.querySelectorAll('[data-book]').forEach(function(a){
+      a.href = url.toString();
+      // Tells Meta someone headed to checkout, so the "visited, didn't book" retargeting ad set can find them
+      a.addEventListener('click', function(){
+        if (window.fbq) fbq('track', 'InitiateCheckout', {content_name: 'ASPW Dec 19-20', value: 7500, currency: 'INR'});
+      });
+    });
   })();
 </script>
 <script>
