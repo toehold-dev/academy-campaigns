@@ -92,6 +92,20 @@
   .hero .btn{background:var(--tag);border-color:var(--tag);color:var(--ink)}
   .hero .btn:hover{background:#fff;border-color:#fff}
   .reassure{font-size:.9375rem;margin-top:14px;color:#CFCFCF}
+  .wa-icon{width:20px;height:20px;flex:none;color:#25D366}
+  .wa-link{display:inline-flex;align-items:center;gap:8px;font-weight:600;color:var(--ink);text-decoration:underline;text-underline-offset:4px;text-decoration-color:rgba(36,36,36,.35)}
+  .wa-link:hover{text-decoration-color:currentColor}
+  .hero .wa-link,.close .wa-link{color:#fff;text-decoration-color:rgba(255,255,255,.4)}
+  .hero .wa-link:hover,.close .wa-link:hover{text-decoration-color:#fff}
+  .hero-links{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:14px}
+  .hero-links .watch{margin-top:0}
+  .ticket-side .wa-link{margin-top:16px;font-size:.9375rem}
+  .faq-more{margin-top:28px}
+  .close .wa-link{display:flex;width:max-content;margin-top:22px}
+  .sticky-actions{display:flex;align-items:center;gap:8px;flex:none}
+  .sticky span{white-space:nowrap}
+  .sticky-wa{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border:1px solid var(--line);border-radius:999px;background:var(--white)}
+  .sticky-wa .wa-icon{width:24px;height:24px}
   .pictured{margin-top:18px;font-size:.8125rem;color:#A8A8A8}
 
   /* Below 1320px the photo moves under the copy */
@@ -276,6 +290,8 @@
 
 <!-- Set this once. Every "Book" button uses it. Keep UTMs from the ad by appending ?utm_... on the ad URL; the script below forwards them. -->
 <script>window.BOOK_URL = "https://rzp.io/rzp/aspwblr";</script>
+<!-- WhatsApp: number with country code, digits only. The message is pre-typed; REF tells the team which page the lead came from. -->
+<script>window.WA_NUMBER = "918022442211"; window.WA_TEXT = "Hi, I'd like to know more about the photography workshop on 19–20 Dec."; window.WA_REF = "ASPW-A";</script>
 <!-- The 1-minute video. Use an .mp4 uploaded next to this page (best: no links off the page), or a YouTube / Vimeo link. Leave empty to show a placeholder. -->
 <script>window.VIDEO_URL = "https://vimeo.com/977487377";</script>
 
@@ -299,7 +315,10 @@
         </dl>
         <a class="btn book-link" href="#book">Book my seat for ₹7,500 + GST</a>
         <p class="reassure">Can't make it after all? Cancel by Monday 14 Dec for a full credit note.</p>
+        <div class="hero-links">
+        <a class="wa-link" data-wa data-wa-where="hero" href="#"><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>Questions first? WhatsApp us</a>
         <button type="button" class="watch" data-video><span class="play-dot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span>Watch Jayanth explain it (90 sec)</button>
+        </div>
       </div>
     </div>
   </section>
@@ -459,6 +478,7 @@
           <p class="price">₹7,500<span class="gst">+ GST</span></p>
           <p class="sub">Per person, for both days. With 18% GST you pay ₹8,850.</p>
           <a class="btn book-link" data-book href="#">Book my seat</a>
+          <a class="wa-link" data-wa data-wa-where="ticket" href="#"><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>Ask a question on WhatsApp</a>
         </div>
       </div>
       <p class="policy"><strong style="color:var(--ink)">If plans change:</strong> cancel on or before Monday 14 Dec for a 100% credit note, or between Tuesday 15 and Thursday 17 Dec for a 50% credit note. Credit notes can be used for any Toehold workshop, course or tour. There are no cash refunds, and no credit once the workshop begins.</p>
@@ -494,6 +514,7 @@
           <p>You get a credit note instead of a refund: 100% if you cancel by Monday 14 Dec, 50% between Tuesday 15 and Thursday 17 Dec. Use it for any Toehold workshop, course or tour.</p>
         </details>
       </div>
+      <p class="faq-more"><a class="wa-link" data-wa data-wa-where="faq" href="#"><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>Something else? Ask us on WhatsApp</a></p>
     </div>
   </section>
 
@@ -501,7 +522,7 @@
     <div class="wrap">
       <h2>The lens can wait. Your holiday photos can't.</h2>
       <p>Saturday 19 and Sunday 20 December, Bengaluru. ₹7,500 + GST.</p>
-      <a class="btn book-link" data-book href="#">Book my seat</a>
+      <a class="btn book-link" data-book href="#">Book my seat</a><a class="wa-link" data-wa data-wa-where="close" href="#"><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>Or WhatsApp us</a>
     </div>
   </section>
 </main>
@@ -522,7 +543,10 @@
 
 <div class="sticky" aria-hidden="false">
   <span><b>₹7,500 + GST</b>19–20 Dec, Bengaluru</span>
-  <a class="btn btn-small book-link" data-book href="#">Book my seat</a>
+  <div class="sticky-actions">
+    <a class="sticky-wa" data-wa data-wa-where="sticky" href="#" aria-label="Ask a question on WhatsApp"><svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg></a>
+    <a class="btn btn-small book-link" data-book href="#">Book my seat</a>
+  </div>
 </div>
 
 <script>
@@ -535,6 +559,22 @@
       // Tells Meta someone headed to checkout, so the "visited, didn't book" retargeting ad set can find them
       a.addEventListener('click', function(){
         if (window.fbq) fbq('track', 'InitiateCheckout', {content_name: 'ASPW Dec 19-20', value: 7500, currency: 'INR'});
+      });
+    });
+  })();
+</script>
+<script>
+  // WhatsApp links: open a chat with the message pre-typed, ending with a reference code (page + ad) so the team knows where the lead came from.
+  (function(){
+    var q = new URLSearchParams(location.search);
+    var ref = window.WA_REF + (q.get('utm_content') ? '-' + q.get('utm_content') : '');
+    var href = 'https://wa.me/' + window.WA_NUMBER + '?text=' + encodeURIComponent(window.WA_TEXT + ' (Ref: ' + ref + ')');
+    document.querySelectorAll('[data-wa]').forEach(function(a){
+      a.href = href; a.target = '_blank'; a.rel = 'noopener';
+      a.addEventListener('click', function(){
+        var where = a.getAttribute('data-wa-where');
+        if (window.fbq) fbq('track', 'Contact', {content_name: 'ASPW WhatsApp', method: 'whatsapp', placement: where});
+        if (window.funnelytics) window.funnelytics.events.trigger('whatsapp_click', {placement: where});
       });
     });
   })();
