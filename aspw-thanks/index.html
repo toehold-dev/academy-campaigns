@@ -12,10 +12,19 @@
 <!-- Workshop dates, times and venue come from this one shared file. -->
 <script src="../aspw-workshop.js"></script>
 
+<!-- Google Analytics 4: academy.toehold.in property, same web stream as the portal -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HV4C06QBZX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HV4C06QBZX');
+</script>
+
 <!-- Funnelytics -->
 <script type="text/javascript"> (function(funnel) {var deferredEvents = [];window.funnelytics = {events: {trigger: function (name, attributes, callback, opts) {deferredEvents.push({name: name, attributes: attributes, callback: callback, opts: opts});}}};var insert = document.getElementsByTagName('script')[0],script = document.createElement('script');script.addEventListener('load', function() {window.funnelytics.init(funnel, false, deferredEvents, {"anonymiseUsers":false});});script.src = 'https://cdn.funnelytics.io/track-v3.js';script.type = 'text/javascript';script.async = true;insert.parentNode.insertBefore(script, insert);})('208655f9-a948-427e-bf1d-ecf5c392fe4a'); </script>
 
-<!-- Meta Pixel. Purchase fires once per browser, and only on the live domain, so a refresh, a second visit or a preview doesn't count a second sale. -->
+<!-- Meta Pixel and GA4 purchase. Purchase fires once per browser, and only on the live domain, so a refresh, a second visit or a preview doesn't count a second sale. -->
 <script>
   window.META_PIXEL_ID = "1460449725521393";
   if (window.META_PIXEL_ID) {
@@ -28,10 +37,12 @@
     if (location.hostname === 'campaigns.toehold.academy') try {
       if (!localStorage.getItem('aspw_purchase_tracked')) {
         fbq('track', 'Purchase', {content_name: 'ASPW ' + ASPW.start, content_category: 'workshop', value: ASPW.fee, currency: 'INR'});
+        gtag('event', 'purchase', {transaction_id: new URLSearchParams(location.search).get('razorpay_payment_id') || ('aspw-' + Date.now()), currency: 'INR', value: ASPW.fee, items: [{item_id: 'aspw', item_name: 'Art & Science of Photography workshop', price: ASPW.fee, quantity: 1}]});
         localStorage.setItem('aspw_purchase_tracked', '1');
       }
     } catch (e) {
       fbq('track', 'Purchase', {content_name: 'ASPW ' + ASPW.start, content_category: 'workshop', value: ASPW.fee, currency: 'INR'});
+        gtag('event', 'purchase', {transaction_id: new URLSearchParams(location.search).get('razorpay_payment_id') || ('aspw-' + Date.now()), currency: 'INR', value: ASPW.fee, items: [{item_id: 'aspw', item_name: 'Art & Science of Photography workshop', price: ASPW.fee, quantity: 1}]});
     }
   }
 </script>

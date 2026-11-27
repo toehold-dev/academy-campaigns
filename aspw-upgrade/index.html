@@ -12,6 +12,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+<!-- Google Analytics 4: academy.toehold.in property, same web stream as the portal -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HV4C06QBZX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HV4C06QBZX');
+</script>
+
 <!-- Funnelytics -->
 <script type="text/javascript"> (function(funnel) {var deferredEvents = [];window.funnelytics = {events: {trigger: function (name, attributes, callback, opts) {deferredEvents.push({name: name, attributes: attributes, callback: callback, opts: opts});}}};var insert = document.getElementsByTagName('script')[0],script = document.createElement('script');script.addEventListener('load', function() {window.funnelytics.init(funnel, false, deferredEvents, {"anonymiseUsers":false});});script.src = 'https://cdn.funnelytics.io/track-v3.js';script.type = 'text/javascript';script.async = true;insert.parentNode.insertBefore(script, insert);})('208655f9-a948-427e-bf1d-ecf5c392fe4a'); </script>
 
@@ -559,6 +568,7 @@
       // Tells Meta someone headed to checkout, so the "visited, didn't book" retargeting ad set can find them
       a.addEventListener('click', function(){
         if (window.fbq) fbq('track', 'InitiateCheckout', {content_name: 'ASPW Dec 19-20', value: 7500, currency: 'INR'});
+        if (window.gtag) gtag('event', 'begin_checkout', {currency: 'INR', value: 7500, items: [{item_id: 'aspw', item_name: 'Art & Science of Photography workshop', price: 7500, quantity: 1}]});
       });
     });
   })();
@@ -575,6 +585,7 @@
         var where = a.getAttribute('data-wa-where');
         if (window.fbq) fbq('track', 'Contact', {content_name: 'ASPW WhatsApp', method: 'whatsapp', placement: where});
         if (window.funnelytics) window.funnelytics.events.trigger('whatsapp_click', {placement: where});
+        if (window.gtag) gtag('event', 'whatsapp_click', {placement: where});
       });
     });
   })();
