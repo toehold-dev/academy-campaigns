@@ -34,15 +34,20 @@
     fbq('init', window.META_PIXEL_ID);
     fbq('track', 'PageView');
     // Only count sales on the live site, never from a local preview.
+    var trackPurchase = function () {
+      var payId = new URLSearchParams(location.search).get('razorpay_payment_id') || ('aspw-' + Date.now());
+      fbq('track', 'Purchase', {content_name: 'ASPW ' + ASPW.start, content_category: 'workshop', value: ASPW.fee, currency: 'INR'});
+      gtag('event', 'purchase', {transaction_id: payId, currency: 'INR', value: ASPW.fee, items: [{item_id: 'aspw', item_name: 'Art & Science of Photography workshop', price: ASPW.fee, quantity: 1}]});
+      // Funnelytics counts revenue only from this event name, with the amount in paise.
+      if (window.funnelytics) window.funnelytics.events.trigger('__commerce_action__', {__label__: 'ASPW workshop ' + ASPW.start, __sku__: 'aspw', __total_in_cents__: ASPW.fee * 100, __currency__: 'INR', __order__: payId});
+    };
     if (location.hostname === 'campaigns.toehold.academy') try {
       if (!localStorage.getItem('aspw_purchase_tracked')) {
-        fbq('track', 'Purchase', {content_name: 'ASPW ' + ASPW.start, content_category: 'workshop', value: ASPW.fee, currency: 'INR'});
-        gtag('event', 'purchase', {transaction_id: new URLSearchParams(location.search).get('razorpay_payment_id') || ('aspw-' + Date.now()), currency: 'INR', value: ASPW.fee, items: [{item_id: 'aspw', item_name: 'Art & Science of Photography workshop', price: ASPW.fee, quantity: 1}]});
+        trackPurchase();
         localStorage.setItem('aspw_purchase_tracked', '1');
       }
     } catch (e) {
-      fbq('track', 'Purchase', {content_name: 'ASPW ' + ASPW.start, content_category: 'workshop', value: ASPW.fee, currency: 'INR'});
-        gtag('event', 'purchase', {transaction_id: new URLSearchParams(location.search).get('razorpay_payment_id') || ('aspw-' + Date.now()), currency: 'INR', value: ASPW.fee, items: [{item_id: 'aspw', item_name: 'Art & Science of Photography workshop', price: ASPW.fee, quantity: 1}]});
+      trackPurchase();
     }
   }
 </script>

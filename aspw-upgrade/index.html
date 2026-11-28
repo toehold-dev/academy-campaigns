@@ -566,9 +566,13 @@
     document.querySelectorAll('[data-book]').forEach(function(a){
       a.href = url.toString();
       // Tells Meta someone headed to checkout, so the "visited, didn't book" retargeting ad set can find them
+      // Which button was clicked, for the Funnelytics book_click event
+      var box = a.closest('header, section, .sticky, dialog');
+      var where = !box ? 'page' : box.tagName === 'HEADER' ? 'top bar' : box.classList.contains('sticky') ? 'mobile bar' : box.tagName === 'DIALOG' ? 'after video' : box.classList.contains('hero') ? 'hero' : box.classList.contains('book') ? 'booking ticket' : box.classList.contains('close') ? 'closing' : box.className.split(' ')[0];
       a.addEventListener('click', function(){
         if (window.fbq) fbq('track', 'InitiateCheckout', {content_name: 'ASPW Dec 19-20', value: 7500, currency: 'INR'});
         if (window.gtag) gtag('event', 'begin_checkout', {currency: 'INR', value: 7500, items: [{item_id: 'aspw', item_name: 'Art & Science of Photography workshop', price: 7500, quantity: 1}]});
+        if (window.funnelytics) window.funnelytics.events.trigger('book_click', {placement: where});
       });
     });
   })();
